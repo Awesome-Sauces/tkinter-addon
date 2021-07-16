@@ -1,1 +1,1 @@
-# tkinter-addon
+# simple-tkinter-addon
