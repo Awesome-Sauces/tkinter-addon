@@ -1,13 +1,4 @@
 from tkinter import *
-from colorama import Fore, Back, Style
-import __math__
-'''
-print(Fore.RED + 'some red text')
-print(Back.GREEN + 'and with a green background')
-print(Style.DIM + 'and in dim text')
-print(Style.RESET_ALL)
-print('back to normal now')
-'''
 
 class CantTakeInteger(ValueError):
     pass
@@ -77,7 +68,6 @@ class TkAddonPack():
             varname = Label(tab, text=text)
             varname.pack()
     
-    
     def entry(tab='%s', text='Button', varname='varname'):
         if type(varname) == int:
             raise CantTakeInteger
@@ -85,6 +75,3 @@ class TkAddonPack():
             varname = Entry(tab, text=text)
             varname.pack()
             varname.insert(0, text)
-
-
-        
