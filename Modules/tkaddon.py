@@ -1,15 +1,26 @@
 from tkinter import *
-# Error Class
-class tkaError(Exception):
-    def __init__(self, msg):
-        super().__init__(msg)
+# Tk Addons Parent Class
+class tka_parent():
+    # Error Class
+    class tkaError(Exception):
+        def __init__(self, msg):
+            super().__init__(msg)
+    def __init__(self, placement="NULL"):
+        self.placement = placement
+        self.row = 0
+        self.column = 0
+    def convert(self):
+        self.row = int(self.placement[5:6])
+        self.column = int(self.placement[7:8])
+        return self.row, self.column
+
 # All functions
-class tka():
+class tka(tka_parent):
     # entry volume
     def entry(placement, tab):
         if placement[0:4] == "grid":
-            row = int(placement[5:6])
-            column = int(placement[7:8])
+            grid_location = tka(placement)
+            row, column = grid_location.convert()
             entry = Entry(tab)
             entry.grid(row=column, column=row)
             return entry
@@ -17,11 +28,13 @@ class tka():
             entry = Entry(tab)
             entry.pack()
             return entry
+        else:
+            raise tka_parent.tkaError("Error!")
     # button volume
-    def button(placement, tab, text):
+    def button(placement, tab, textit):
         if placement[0:4] == "grid":
-            row = int(placement[5:6])
-            column = int(placement[7:8])
+            grid_location = tka(placement)
+            row, column = grid_location.convert()
             button = Button(tab, text=textit)
             button.grid(row=row, column=column)
             return button
@@ -29,15 +42,19 @@ class tka():
             button = Button(tab, text="test")
             button.pack()
             return button
+        else:
+            raise tka_parent.tkaError("Error!")
     # label volume
     def label(placement, tab, text):
         if placement[0:4] == "grid":
-            row = int(placement[5:6])
-            column = int(placement[7:8])
-            label = Label(tab)
+            grid_location = tka(placement)
+            row, column = grid_location.convert()
+            label = Label(tab, text=text)
             label.grid(row=row, column=column)
             return label
         elif placement[0:4] == "pack":
-            label = Label(tab, text)
+            label = Label(tab, text=text)
             label.pack()
             return label
+        else:
+            raise tka_parent.tkaError("Error!")
