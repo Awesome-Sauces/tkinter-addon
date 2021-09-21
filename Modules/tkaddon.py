@@ -31,11 +31,11 @@ class tka(tka_parent):
         else:
             raise tka_parent.tkaError("Error!")
     # button volume
-    def button(placement, tab, textit):
+    def button(placement, tab, text, command="Insert Function Name Here"):
         if placement[0:4] == "grid":
             grid_location = tka(placement)
             row, column = grid_location.convert()
-            button = Button(tab, text=textit)
+            button = Button(tab, text=text, command=command)
             button.grid(row=row, column=column)
             return button
         elif placement[0:4] == "pack":
