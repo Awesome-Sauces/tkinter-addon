@@ -31,11 +31,7 @@ class tka(tka_parent):
         else:
             raise tka_parent.tkaError("Error!")
     # button volume
-<<<<<<< Updated upstream
-    def button(placement, tab, text, command="Insert Function Name Here"):
-=======
     def button(placement, tab, text, command="Insert Function Name Here!"):
->>>>>>> Stashed changes
         if placement[0:4] == "grid":
             grid_location = tka(placement)
             row, column = grid_location.convert()
