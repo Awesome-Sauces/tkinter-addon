@@ -17,7 +17,7 @@ class tka_parent():
 # All functions
 class tka(tka_parent):
     # entry volume
-    def entry(placement, tab):
+    def entry(placement=0, tab=0, text=0, columnspan=0, width=0, borderwidth=0, **kwargs):
         if placement[0:4] == "grid":
             grid_location = tka(placement)
             row, column = grid_location.convert()
@@ -31,21 +31,21 @@ class tka(tka_parent):
         else:
             raise tka_parent.tkaError("Error!")
     # button volume
-    def button(placement, tab, textit):
+    def button(placement=0, tab=0, text=0, command=0, padx=0, pady=0, **kwargs):
         if placement[0:4] == "grid":
             grid_location = tka(placement)
             row, column = grid_location.convert()
-            button = Button(tab, text=textit)
+            button = Button(tab, text=text, command=command)
             button.grid(row=row, column=column)
             return button
         elif placement[0:4] == "pack":
-            button = Button(tab, text="test")
+            button = Button(tab, text=text, command=command)
             button.pack()
             return button
         else:
             raise tka_parent.tkaError("Error!")
     # label volume
-    def label(placement, tab, text):
+    def label(placement=0, tab=0, text=0, command=0, **kwargs):
         if placement[0:4] == "grid":
             grid_location = tka(placement)
             row, column = grid_location.convert()
@@ -58,3 +58,6 @@ class tka(tka_parent):
             return label
         else:
             raise tka_parent.tkaError("Error!")
+
+
+

@@ -1,11 +1,14 @@
 from tkinter import *
 from tkaddon import *
 root = Tk()
-#tka_entry = tka.entry("grid", root)
-#tka_entry.insert(0, "WHAT")
-#print(tka_entry.get())
-tka_button = tka.button("pack 0 1", root, "textclea")
+def HelloWorld():
+    print("Hello World!")
+tka_buttonA = tka.button(placement="grid 0 1", tab=root, text="Hello", command=HelloWorld)
+tka_buttonB = tka.button(placement="grid 0 2", tab=root, text="Hello", command=HelloWorld)
+tka_buttonC = tka.button(placement="grid 2 0", tab=root, text="Hello", command=HelloWorld)
 root.mainloop()
+
+
 
 
 
